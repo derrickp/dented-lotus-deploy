@@ -8,8 +8,6 @@ var RaceModel = (function () {
         this.key = race.key;
         if (race.raceDate) {
             this.raceDate = race.raceDate;
-            var d = date_1.getDurationFromNow(this.raceDate);
-            this.complete = d.timeRemaining <= 0;
         }
         if (race.qualiDate)
             this.qualiDate = race.qualiDate;
@@ -19,6 +17,8 @@ var RaceModel = (function () {
         else {
             this.cutoff = this.raceDate;
         }
+        var d = date_1.getDurationFromNow(this.cutoff);
+        this.complete = d.timeRemaining <= 0;
         this.imageUrl = race.imageUrl;
         this._context = context;
     }
